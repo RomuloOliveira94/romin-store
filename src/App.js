@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Anime from "./pages/categorys/Anime";
-import Comics from "./pages/categorys/Comics";
-import Games from "./pages/categorys/Games";
+import Anime from "./pages/categories/Anime";
+import Comics from "./pages/categories/Comics";
+import Games from "./pages/categories/Games";
 import Home from "./pages/home/Home";
 
 function App() {

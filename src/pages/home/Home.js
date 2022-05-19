@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
@@ -25,9 +26,9 @@ const Home = () => {
         data.map((items, index) => (
           <div key={index}>
             <img src={items.img} alt="" />
-            <li>{items.name}</li>
-            <li>{items.description}</li>
-            <li>{items.price}</li>
+            <Typography>{items.name}</Typography>
+            <Typography>{items.description}</Typography>
+            <Typography>{items.price}</Typography>
           </div>
         ))}
       {filteredData &&
