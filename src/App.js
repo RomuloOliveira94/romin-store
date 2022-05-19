@@ -6,7 +6,7 @@ function App() {
 
   useEffect(() => {
     const getContent = async () => {
-      const req = await fetch("http://localhost:3000/products");
+      const req = await fetch("https://romin-store-mock-api.herokuapp.com/products");
       const res = await req.json();
       setData(res);
     };
@@ -14,34 +14,16 @@ function App() {
   }, []);
   
   useEffect(() => {
-    const filters = data && data.anime.filter((val) => {
-      return val.name.toLowerCase().includes("naruto");
+    const filters = data && data.filter((val) => {
+      return val.name.toLowerCase().includes("mario");
     });
     setFilteredData(filters);
-  }, []);
+  }, [data]);
 
   return (
     <div className="App">
       {data &&
-        data.anime.map((items, index) => (
-          <div key={index}>
-            <img src={items.img} alt="" />
-            <li>{items.name}</li>
-            <li>{items.description}</li>
-            <li>{items.price}</li>
-          </div>
-        ))}
-      {data &&
-        data.games.map((items, index) => (
-          <div key={index}>
-            <img src={items.img} alt="" />
-            <li>{items.name === "naruto"}</li>
-            <li>{items.description}</li>
-            <li>{items.price}</li>
-          </div>
-        ))}
-      {data &&
-        data.comics.map((items, index) => (
+        data.map((items, index) => (
           <div key={index}>
             <img src={items.img} alt="" />
             <li>{items.name}</li>
@@ -57,20 +39,6 @@ function App() {
             <li>{val.description}</li>
           </div>
         ))}
-      {data &&
-        data.anime
-          .filter((val) => {
-            return val.name.toLowerCase().includes("naruto") 
-          })
-          .map((val, key) => {
-            return (
-              <div key={key}>
-                <img src={val.img} alt="" />
-                <li>{val.name}</li>
-                <li>{val.description}</li>
-              </div>
-            );
-          })}
     </div>
   );
 }
