@@ -1,26 +1,27 @@
-import { Typography } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Typography, Button, styled } from "@mui/material";
 import React from "react";
-import { useEffect, useState } from "react";
-import { useFetch } from "../../hooks/useFetch";
+// import { useEffect, useState } from "react";
+// import { useFetch } from "../../hooks/useFetch";
 
 const Home = () => {
-  const [filteredData, setFilteredData] = useState();
-  const [loading, data, error] = useFetch(
-    "https://romin-store-mock-api.herokuapp.com/products"
-  );
+  //   const [filteredData, setFilteredData] = useState();
+  //   const [loading, data, error] = useFetch(
+  //     "https://romin-store-mock-api.herokuapp.com/products"
+  //   );
 
-  useEffect(() => {
-    const filters =
-      data &&
-      data.filter((val) => {
-        return val.name.toLowerCase().includes("mario");
-      });
-    setFilteredData(filters);
-  }, [data]);
+  //   useEffect(() => {
+  //     const filters =
+  //       data &&
+  //       data.filter((val) => {
+  //         return val.name.toLowerCase().includes("mario");
+  //       });
+  //     setFilteredData(filters);
+  //   }, [data]);
 
   return (
     <div>
-      {error && <h1>Temos um problema tente novamente mais tarde</h1>}
+      {/* {error && <h1>Temos um problema tente novamente mais tarde</h1>}
       {loading && <h1>Carregando conteúdo</h1>}
       {data &&
         data.map((items, index) => (
@@ -38,7 +39,7 @@ const Home = () => {
             <li>{val.name}</li>
             <li>{val.description}</li>
           </div>
-        ))}
+        ))} */}
     </div>
   );
 };
