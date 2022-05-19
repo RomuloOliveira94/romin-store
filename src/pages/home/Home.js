@@ -1,0 +1,45 @@
+import React from "react";
+import { useEffect, useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
+
+const Home = () => {
+  const [filteredData, setFilteredData] = useState();
+  const [loading, data, error] = useFetch(
+    "https://romin-store-mock-api.herokuapp.com/products"
+  );
+
+  useEffect(() => {
+    const filters =
+      data &&
+      data.filter((val) => {
+        return val.name.toLowerCase().includes("mario");
+      });
+    setFilteredData(filters);
+  }, [data]);
+
+  return (
+    <div>
+      {error && <h1>Temos um problema tente novamente mais tarde</h1>}
+      {loading && <h1>Carregando conteúdo</h1>}
+      {data &&
+        data.map((items, index) => (
+          <div key={index}>
+            <img src={items.img} alt="" />
+            <li>{items.name}</li>
+            <li>{items.description}</li>
+            <li>{items.price}</li>
+          </div>
+        ))}
+      {filteredData &&
+        filteredData.map((val, index) => (
+          <div key={index}>
+            <img src={val.img} alt="" />
+            <li>{val.name}</li>
+            <li>{val.description}</li>
+          </div>
+        ))}
+    </div>
+  );
+};
+
+export default Home;
