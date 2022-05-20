@@ -1,5 +1,4 @@
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Typography, Button, styled } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import React from "react";
 // import { useEffect, useState } from "react";
 // import { useFetch } from "../../hooks/useFetch";
@@ -20,7 +19,8 @@ const Home = () => {
   //   }, [data]);
 
   return (
-    <div>
+    <Box bgcolor={"white"} flex={4}>
+        <Typography variant="h1">Home</Typography>
       {/* {error && <h1>Temos um problema tente novamente mais tarde</h1>}
       {loading && <h1>Carregando conteúdo</h1>}
       {data &&
@@ -40,7 +40,7 @@ const Home = () => {
             <li>{val.description}</li>
           </div>
         ))} */}
-    </div>
+    </Box>
   );
 };
 

@@ -6,22 +6,32 @@ import Home from "./pages/home/Home";
 import NavBar from "./components/layout/NavBar";
 import SideBar from "./components/layout/SideBar";
 import Footer from "./components/layout/Footer";
+import { Box, Container, CssBaseline, Stack, styled } from "@mui/material";
 
 function App() {
+  const StyledApp = styled(Box)({
+    backgroundColor: "#D3D3D3",
+  });
+
   return (
-    <div className="App">
+    <StyledApp>
+      <CssBaseline />
       <BrowserRouter>
         <NavBar />
-        <SideBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/anime" element={<Anime />} />
-          <Route path="/games" element={<Comics />} />
-          <Route path="/comics" element={<Games />} />
-        </Routes>
+        <Container sx={{ minHeight: "80vh", backgroundColor: "#fff" }}>
+          <Stack direction={"row"} justifyContent="space-between">
+            <SideBar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/anime" element={<Anime />} />
+              <Route path="/games" element={<Comics />} />
+              <Route path="/comics" element={<Games />} />
+            </Routes>
+          </Stack>
+        </Container>
         <Footer />
       </BrowserRouter>
-    </div>
+    </StyledApp>
   );
 }
 
