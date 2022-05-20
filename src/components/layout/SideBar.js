@@ -11,7 +11,7 @@ import React from "react";
 const Sidebar = () => {
   return (
     <Box
-      bgcolor={"white"}
+      color={"white"}
       flex={1}
       sx={{ display: { xs: "none", sm: "block" } }}
     >

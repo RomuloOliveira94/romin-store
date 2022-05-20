@@ -16,20 +16,20 @@ const NavBar = ({ handleSearch }) => {
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
-    height: "8vh",
+    alignItems: "center",
+    textAlign: "center",
   });
 
   const FooterToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "center",
     flexDirection: "row",
-    height: "2vh",
   });
 
   const StyledInput = styled(Input)({
     backgroundColor: "white",
     padding: 2,
-    marginRight: 10,
+    marginLeft: 10,
   });
 
   const SeachBar = styled(Box)({
@@ -38,21 +38,26 @@ const NavBar = ({ handleSearch }) => {
   });
 
   return (
-    <AppBar color={"secondary"} position="sticky">
+    <AppBar color={"secondary"} position="sticky" sx={{ textAlign: "center" }}>
       <StyledToolbar>
-        <Typography variant="h5">Romin's Store</Typography>
+        <Typography variant="h6">Romin's Store</Typography>
+        <ShoppingBag fontSize="large" />
+      </StyledToolbar>
+      <FooterToolbar
+        sx={{
+          flexDirection: { xs: "column", sm: "row" },
+          marginBottom: { xs: "10px" },
+        }}
+      >
+        <Button>Anime</Button>
+        <Button>Comics</Button>
+        <Button>Games</Button>
         <SeachBar>
           <StyledInput placeholder="Search..." />
           <Button variant="contained" onClick={handleSearch}>
             <SearchIcon fontSize="medium" />
           </Button>
         </SeachBar>
-        <ShoppingBag fontSize="large" />
-      </StyledToolbar>
-      <FooterToolbar>
-        <Button>Anime</Button>
-        <Button>Comics</Button>
-        <Button>Games</Button>
       </FooterToolbar>
     </AppBar>
   );

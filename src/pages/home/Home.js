@@ -1,13 +1,14 @@
 import { Typography, Box } from "@mui/material";
 import React from "react";
-// import { useEffect, useState } from "react";
-// import { useFetch } from "../../hooks/useFetch";
+import ProductCard from "../../components/card/ProductCard";
+import { useEffect, useState } from "react";
+import { useFetch } from "../../hooks/useFetch";
 
 const Home = () => {
-  //   const [filteredData, setFilteredData] = useState();
-  //   const [loading, data, error] = useFetch(
-  //     "https://romin-store-mock-api.herokuapp.com/products"
-  //   );
+  const [filteredData, setFilteredData] = useState();
+  const [loading, data, error] = useFetch(
+    "https://romin-store-mock-api.herokuapp.com/products"
+  );
 
   //   useEffect(() => {
   //     const filters =
@@ -19,8 +20,14 @@ const Home = () => {
   //   }, [data]);
 
   return (
-    <Box bgcolor={"white"} flex={4}>
-        <Typography variant="h1">Home</Typography>
+    <Box color={"white"} flex={4}>
+      <Box sx={{ display: "flex", flexWrap: 'wrap' }}>
+        {data &&
+          data.map((product) => (
+            <ProductCard data={product} key={product.id} />
+          ))}
+      </Box>
+
       {/* {error && <h1>Temos um problema tente novamente mais tarde</h1>}
       {loading && <h1>Carregando conteúdo</h1>}
       {data &&
