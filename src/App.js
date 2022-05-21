@@ -25,8 +25,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/anime" element={<Anime />} />
-              <Route path="/games" element={<Comics />} />
-              <Route path="/comics" element={<Games />} />
+              <Route path="/games" element={<Games />} />
+              <Route path="/comics" element={<Comics />} />
             </Routes>
           </Stack>
         </Container>

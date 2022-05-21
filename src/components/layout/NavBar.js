@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import {
   AppBar,
@@ -49,9 +50,9 @@ const NavBar = ({ handleSearch }) => {
           marginBottom: { xs: "10px" },
         }}
       >
-        <Button>Anime</Button>
-        <Button>Comics</Button>
-        <Button>Games</Button>
+        <Link to="/anime"><Button>Anime</Button></Link>
+        <Link to="/comics"><Button>Comics</Button></Link>
+        <Link to="/games"><Button>Games</Button></Link>
         <SeachBar>
           <StyledInput placeholder="Search..." />
           <Button variant="contained" onClick={handleSearch}>
