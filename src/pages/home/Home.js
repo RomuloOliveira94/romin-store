@@ -4,12 +4,7 @@ import ProductCard from "../../components/card/ProductCard";
 import { useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
 
-const Home = () => {
-  const [filteredData, setFilteredData] = useState();
-  const [loading, data, error] = useFetch(
-    "https://romin-store-mock-api.herokuapp.com/products"
-  );
-
+const Home = ({data}) => {
   //   useEffect(() => {
   //     const filters =
   //       data &&

@@ -10,10 +10,20 @@ import {
   Typography,
 } from "@mui/material";
 
-import React from "react";
+import React, { useState } from "react";
 import { ShoppingBag } from "@mui/icons-material";
 
-const NavBar = ({ handleSearch }) => {
+const NavBar = ({ searchProducts }) => {
+  const [search, setSearch] = useState("");
+
+  const handleText = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearch = () => {
+    searchProducts(search);
+  };
+
   const StyledToolbar = styled(Toolbar)({
     display: "flex",
     justifyContent: "space-between",
@@ -31,6 +41,7 @@ const NavBar = ({ handleSearch }) => {
     backgroundColor: "white",
     padding: 2,
     marginLeft: 10,
+    borderRadius: "5px 0 0 5px",
   });
 
   const SeachBar = styled(Box)({
@@ -50,11 +61,22 @@ const NavBar = ({ handleSearch }) => {
           marginBottom: { xs: "10px" },
         }}
       >
-        <Link to="/anime"><Button>Anime</Button></Link>
-        <Link to="/comics"><Button>Comics</Button></Link>
-        <Link to="/games"><Button>Games</Button></Link>
+        <Link to="/anime">
+          <Button>Anime</Button>
+        </Link>
+        <Link to="/comics">
+          <Button>Comics</Button>
+        </Link>
+        <Link to="/games">
+          <Button>Games</Button>
+        </Link>
         <SeachBar>
-          <StyledInput placeholder="Search..." />
+          <StyledInput
+            placeholder="Search..."
+            type="text"
+            onChange={handleText}
+            value={search}
+          />
           <Button variant="contained" onClick={handleSearch}>
             <SearchIcon fontSize="medium" />
           </Button>

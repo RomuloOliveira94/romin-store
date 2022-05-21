@@ -8,7 +8,6 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import SmartToySharpIcon from "@mui/icons-material/SmartToySharp";
 
 const Sidebar = () => {
   const StyledLink = styled(Link)({

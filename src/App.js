@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useFetch } from "./hooks/useFetch";
 import Anime from "./pages/categories/Anime";
 import Comics from "./pages/categories/Comics";
 import Games from "./pages/categories/Games";
@@ -13,17 +15,39 @@ function App() {
     backgroundColor: "#D3D3D3",
   });
 
+  const [loading, data, error] = useFetch(
+    "https://romin-store-mock-api.herokuapp.com/products"
+  );
+
+  const [productsData, setProductsData] = useState(null);
+
+  useEffect(() => {
+    return setProductsData(data);
+  }, [data]);
+
+  function handleSearch(search) {
+    if (search === "") {
+      return setProductsData(data);
+    } else {
+      const filters =
+        data &&
+        data.filter((val) => {
+          return val.name.toLowerCase().includes(search);
+        });
+      return setProductsData(filters);
+    }
+  }
 
   return (
     <StyledApp>
       <CssBaseline />
       <BrowserRouter>
-        <NavBar />
+        <NavBar searchProducts={handleSearch} />
         <Container sx={{ minHeight: "80vh", backgroundColor: "#fff" }}>
           <Stack direction={"row"} justifyContent="space-between">
             <SideBar />
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home data={productsData} />} />
               <Route path="/anime" element={<Anime />} />
               <Route path="/games" element={<Games />} />
               <Route path="/comics" element={<Comics />} />
