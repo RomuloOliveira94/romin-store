@@ -33,6 +33,9 @@ const FooterNavbar = ({ handleSearch, handleText, search }) => {
         marginBottom: { xs: "10px" },
       }}
     >
+      <Link to="/" onClick={handleSearch}>
+        <StyledButton>Home</StyledButton>
+      </Link>
       <Link to="/anime">
         <StyledButton>Anime</StyledButton>
       </Link>
@@ -47,12 +50,11 @@ const FooterNavbar = ({ handleSearch, handleText, search }) => {
           placeholder="Search..."
           onChange={handleText}
           value={search}
+          onKeyUp={handleSearch}
         />
         <Button
           variant="contained"
-          type="submit"
           onClick={handleSearch}
-          onKeyPress={handleSearch}
         >
           <SearchIcon fontSize="medium" />
         </Button>

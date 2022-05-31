@@ -33,7 +33,7 @@ function App() {
       const filters =
         data &&
         data.filter((val) => {
-          return val.name.toLowerCase().includes(search);
+          return val.name.toLowerCase().includes(search.toLowerCase());
         });
       return setProductsData(filters);
     }

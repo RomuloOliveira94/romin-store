@@ -11,6 +11,7 @@ import {
 import React, { useState } from "react";
 import { ShoppingBag } from "@mui/icons-material";
 import FooterNavBar from "./FooterNavBar";
+import { useNavigate } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -20,6 +21,7 @@ const StyledToolbar = styled(Toolbar)({
 });
 
 const NavBar = ({ searchProducts }) => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
   const handleText = (e) => {
@@ -27,10 +29,17 @@ const NavBar = ({ searchProducts }) => {
   };
 
   const handleSearch = (e) => {
-    console.log(e)
-    searchProducts(search);
+    if (e.key === "Enter") {
+      searchProducts(search);
+      navigate("/");
+      setSearch("");
+    } else if (e.type === "click") {
+      searchProducts(search);
+      navigate("/");
+      setSearch("");
+    }
+    return;
   };
-
 
   return (
     <AppBar color={"secondary"} position="sticky" sx={{ textAlign: "center" }}>
