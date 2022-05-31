@@ -10,10 +10,11 @@ import SideBar from "./components/layout/SideBar";
 import Footer from "./components/layout/Footer";
 import { Box, Container, CssBaseline, Stack, styled } from "@mui/material";
 
+const StyledApp = styled(Box)({
+  backgroundColor: "#D3D3D3",
+});
+
 function App() {
-  const StyledApp = styled(Box)({
-    backgroundColor: "#D3D3D3",
-  });
 
   const [loading, data, error] = useFetch(
     "https://romin-store-mock-api.herokuapp.com/products"

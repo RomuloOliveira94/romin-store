@@ -9,11 +9,11 @@ import {
   Typography,
 } from "@mui/material";
 
+const StyledLink = styled(Link)({
+  textDecoration: "none",
+  color: "black",
+});
 const Sidebar = () => {
-  const StyledLink = styled(Link)({
-    textDecoration: "none",
-    color: "black",
-  });
   return (
     <Box color={"white"} flex={1} sx={{ display: { xs: "none", sm: "block" } }}>
       <List>
