@@ -1,8 +1,5 @@
 import {
   AppBar,
-  Box,
-  Button,
-  Input,
   styled,
   Toolbar,
   Typography,
@@ -11,7 +8,7 @@ import {
 import React, { useState } from "react";
 import { ShoppingBag } from "@mui/icons-material";
 import FooterNavBar from "./FooterNavBar";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -21,7 +18,6 @@ const StyledToolbar = styled(Toolbar)({
 });
 
 const NavBar = ({ searchProducts }) => {
-  const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
   const handleText = (e) => {
@@ -31,11 +27,9 @@ const NavBar = ({ searchProducts }) => {
   const handleSearch = (e) => {
     if (e.key === "Enter") {
       searchProducts(search);
-      navigate("/");
       setSearch("");
     } else if (e.type === "click") {
       searchProducts(search);
-      navigate("/");
       setSearch("");
     }
     return;
@@ -44,14 +38,22 @@ const NavBar = ({ searchProducts }) => {
   return (
     <AppBar color={"secondary"} position="sticky" sx={{ textAlign: "center" }}>
       <StyledToolbar>
-        <Typography variant="h6">Romin's Store</Typography>
-        <ShoppingBag fontSize="large" />
+        <Typography
+          variant="h6"
+          onClick={handleSearch}
+          sx={{ cursor: "pointer" }}
+        >
+          Romin's Store
+        </Typography>
+        <FooterNavBar
+          handleText={handleText}
+          handleSearch={handleSearch}
+          search={search}
+        />
+        <Link to={"/cart"}>
+          <ShoppingBag fontSize="large" />
+        </Link>
       </StyledToolbar>
-      <FooterNavBar
-        handleText={handleText}
-        handleSearch={handleSearch}
-        search={search}
-      />
     </AppBar>
   );
 };

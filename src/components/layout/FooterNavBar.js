@@ -1,24 +1,24 @@
-import { Box, Button, Input, styled, Toolbar } from "@mui/material";
+import { Box, Button, Input, styled, Toolbar, Link } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 
 const FooterToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "center",
   flexDirection: "row",
+  alignItems: "center",
 });
 
 const StyledInput = styled(Input)({
   backgroundColor: "white",
   padding: 2,
-  marginLeft: 10,
   borderRadius: "5px 0 0 5px",
 });
 
 const SearchBar = styled(Box)({
   display: "flex",
   alignItens: "center",
+  justifyContent: "center",
 });
 
 const StyledButton = styled(Button)({
@@ -33,18 +33,20 @@ const FooterNavbar = ({ handleSearch, handleText, search }) => {
         marginBottom: { xs: "10px" },
       }}
     >
-      <Link to="/" onClick={handleSearch}>
-        <StyledButton>Home</StyledButton>
-      </Link>
-      <Link to="/anime">
-        <StyledButton>Anime</StyledButton>
-      </Link>
-      <Link to="/comics">
-        <StyledButton>Comics</StyledButton>
-      </Link>
-      <Link to="/games">
-        <StyledButton>Games</StyledButton>
-      </Link>
+      <Box sx={{ display: { xs: "block", sm: "none" } }}>
+        <Link onClick={handleSearch}>
+          <StyledButton>Home</StyledButton>
+        </Link>
+        <Link>
+          <StyledButton>Anime</StyledButton>
+        </Link>
+        <Link>
+          <StyledButton>Comics</StyledButton>
+        </Link>
+        <Link>
+          <StyledButton>Games</StyledButton>
+        </Link>
+      </Box>
       <SearchBar>
         <StyledInput
           placeholder="Search..."
@@ -52,10 +54,7 @@ const FooterNavbar = ({ handleSearch, handleText, search }) => {
           value={search}
           onKeyUp={handleSearch}
         />
-        <Button
-          variant="contained"
-          onClick={handleSearch}
-        >
+        <Button variant="contained" onClick={handleSearch}>
           <SearchIcon fontSize="medium" />
         </Button>
       </SearchBar>
