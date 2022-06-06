@@ -1,6 +1,7 @@
-import { Box, Button, Input, styled, Toolbar, Link } from "@mui/material";
+import { Box, Button, Input, styled, Toolbar } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
 
 const FooterToolbar = styled(Toolbar)({
   display: "flex",
@@ -21,6 +22,11 @@ const SearchBar = styled(Box)({
   justifyContent: "center",
 });
 
+const StyledLink = styled(Link)({
+  textDecoration: "none",
+  color: "#A4161A",
+});
+
 const StyledButton = styled(Button)({
   textDecoration: "none",
 });
@@ -34,18 +40,15 @@ const FooterNavbar = ({ handleSearch, handleText, search }) => {
       }}
     >
       <Box sx={{ display: { xs: "block", sm: "none" } }}>
-        <Link onClick={handleSearch}>
-          <StyledButton>Home</StyledButton>
-        </Link>
-        <Link>
-          <StyledButton>Anime</StyledButton>
-        </Link>
-        <Link>
-          <StyledButton>Comics</StyledButton>
-        </Link>
-        <Link>
-          <StyledButton>Games</StyledButton>
-        </Link>
+        <StyledButton onClick={handleSearch}>
+          <StyledLink to="/">Home</StyledLink>
+        </StyledButton>
+
+        <StyledButton>Anime</StyledButton>
+
+        <StyledButton>Comics</StyledButton>
+
+        <StyledButton>Games</StyledButton>
       </Box>
       <SearchBar>
         <StyledInput

@@ -53,7 +53,10 @@ function App() {
     <StyledApp>
       <CssBaseline />
       <BrowserRouter>
-        <NavBar searchProducts={handleSearch} />
+        <NavBar
+          searchProducts={handleSearch}
+          searchProductsByCategory={handleSearchByCategory}
+        />
         <Container sx={{ minHeight: "80vh", backgroundColor: "#fff" }}>
           <Stack direction={"row"} justifyContent="space-between">
             <SideBar

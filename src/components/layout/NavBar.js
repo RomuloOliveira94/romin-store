@@ -1,10 +1,4 @@
-import {
-  AppBar,
-  styled,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-
+import { AppBar, styled, Toolbar, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { ShoppingBag } from "@mui/icons-material";
 import FooterNavBar from "./FooterNavBar";
@@ -15,9 +9,15 @@ const StyledToolbar = styled(Toolbar)({
   justifyContent: "space-between",
   alignItems: "center",
   textAlign: "center",
+  height: "10vh",
 });
 
-const NavBar = ({ searchProducts }) => {
+const StyledLink = styled(Link)({
+  textDecoration: "none",
+  color: "white",
+});
+
+const NavBar = ({ searchProducts, searchProductsByCategory }) => {
   const [search, setSearch] = useState("");
 
   const handleText = (e) => {
@@ -43,16 +43,16 @@ const NavBar = ({ searchProducts }) => {
           onClick={handleSearch}
           sx={{ cursor: "pointer" }}
         >
-          Romin's Store
+          <StyledLink to="/">Romin's Store</StyledLink>
         </Typography>
         <FooterNavBar
           handleText={handleText}
           handleSearch={handleSearch}
           search={search}
         />
-        <Link to={"/cart"}>
+        <StyledLink to="cart">
           <ShoppingBag fontSize="large" />
-        </Link>
+        </StyledLink>
       </StyledToolbar>
     </AppBar>
   );
