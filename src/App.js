@@ -64,7 +64,12 @@ function App() {
               searchProducts={handleSearch}
             />
             <Routes>
-              <Route path="/" element={<Home data={productsData} />} />
+              <Route
+                path="/"
+                element={
+                  <Home data={productsData} error={error} loading={loading} />
+                }
+              />
               <Route path="/cart" element={<Cart />} />
             </Routes>
           </Stack>
