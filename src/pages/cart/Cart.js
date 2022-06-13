@@ -25,7 +25,7 @@ const Cart = () => {
         Cart
       </Typography>
       {cart.map((prod) => (
-        <Item>
+        <Item key={prod.id}>
           <MiniInfosContainer>
             <Typography variant="h5">{prod.name}</Typography>
             <CardMedia

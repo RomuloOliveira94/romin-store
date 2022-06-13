@@ -24,15 +24,21 @@ const Sidebar = ({ searchProductsByCategory, searchProducts }) => {
             <ListItemText primary="Home" />
           </ListItemButton>
         </StyledLink>
-        <ListItemButton onClick={() => searchProductsByCategory("Anime")}>
-          <ListItemText primary="Anime" />
-        </ListItemButton>
-        <ListItemButton onClick={() => searchProductsByCategory("Comics")}>
-          <ListItemText primary="Comics" />
-        </ListItemButton>
-        <ListItemButton onClick={() => searchProductsByCategory("Games")}>
-          <ListItemText primary="Games" />
-        </ListItemButton>
+        <StyledLink to="/">
+          <ListItemButton onClick={() => searchProductsByCategory("Anime")}>
+            <ListItemText primary="Anime" />
+          </ListItemButton>
+        </StyledLink>
+        <StyledLink to="/">
+          <ListItemButton onClick={() => searchProductsByCategory("Comics")}>
+            <ListItemText primary="Comics" />
+          </ListItemButton>
+        </StyledLink>
+        <StyledLink to="/">
+          <ListItemButton onClick={() => searchProductsByCategory("Games")}>
+            <ListItemText primary="Games" />
+          </ListItemButton>
+        </StyledLink>
       </List>
     </Box>
   );

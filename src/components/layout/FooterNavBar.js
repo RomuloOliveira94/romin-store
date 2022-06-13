@@ -31,7 +31,12 @@ const StyledButton = styled(Button)({
   textDecoration: "none",
 });
 
-const FooterNavbar = ({ handleSearch, handleText, search }) => {
+const FooterNavbar = ({
+  handleSearch,
+  handleText,
+  search,
+  searchProductsByCategory,
+}) => {
   return (
     <FooterToolbar
       sx={{
@@ -43,12 +48,21 @@ const FooterNavbar = ({ handleSearch, handleText, search }) => {
         <StyledButton onClick={handleSearch}>
           <StyledLink to="/">Home</StyledLink>
         </StyledButton>
-
-        <StyledButton>Anime</StyledButton>
-
-        <StyledButton>Comics</StyledButton>
-
-        <StyledButton>Games</StyledButton>
+        <StyledLink to="/">
+          <StyledButton onClick={() => searchProductsByCategory("Anime")}>
+            Anime
+          </StyledButton>
+        </StyledLink>
+        <StyledLink to="/">
+          <StyledButton onClick={() => searchProductsByCategory("Comics")}>
+            Comics
+          </StyledButton>
+        </StyledLink>
+        <StyledLink to="/">
+          <StyledButton onClick={() => searchProductsByCategory("Games")}>
+            Games
+          </StyledButton>
+        </StyledLink>
       </Box>
       <SearchBar>
         <StyledInput

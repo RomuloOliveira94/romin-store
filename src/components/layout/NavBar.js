@@ -49,6 +49,7 @@ const NavBar = ({ searchProducts, searchProductsByCategory }) => {
           handleText={handleText}
           handleSearch={handleSearch}
           search={search}
+          searchProductsByCategory={searchProductsByCategory}
         />
         <StyledLink to="cart">
           <ShoppingBag fontSize="large" />
