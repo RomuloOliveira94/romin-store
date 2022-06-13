@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -6,8 +6,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
+import { CartContext } from "../../context/CartContext";
 
 export default function ImgMediaCard({ data }) {
+  const { handleAddToCart } = useContext(CartContext);
+
   return (
     <Card sx={{ margin: "30px auto" }}>
       <CardContent>
@@ -39,7 +42,11 @@ export default function ImgMediaCard({ data }) {
         >
           ${data.price}
         </Typography>
-        <Button variant="contained" size="small">
+        <Button
+          variant="contained"
+          size="small"
+          onClick={() => handleAddToCart(data)}
+        >
           Add to bag
         </Button>
       </CardActions>

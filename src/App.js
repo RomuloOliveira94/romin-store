@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CartContextProvider } from "./context/CartContext";
 import { useEffect, useState } from "react";
 import { useFetch } from "./hooks/useFetch";
 import Home from "./pages/home/Home";
@@ -50,33 +51,35 @@ function App() {
   }
 
   return (
-    <StyledApp>
-      <CssBaseline />
-      <BrowserRouter>
-        <NavBar
-          searchProducts={handleSearch}
-          searchProductsByCategory={handleSearchByCategory}
-        />
-        <Container sx={{ minHeight: "80vh", backgroundColor: "#fff" }}>
-          <Stack direction={"row"} justifyContent="space-between">
-            <SideBar
-              searchProductsByCategory={handleSearchByCategory}
-              searchProducts={handleSearch}
-            />
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Home data={productsData} error={error} loading={loading} />
-                }
+    <CartContextProvider>
+      <StyledApp>
+        <CssBaseline />
+        <BrowserRouter>
+          <NavBar
+            searchProducts={handleSearch}
+            searchProductsByCategory={handleSearchByCategory}
+          />
+          <Container sx={{ minHeight: "80vh", backgroundColor: "#fff" }}>
+            <Stack direction={"row"} justifyContent="space-between">
+              <SideBar
+                searchProductsByCategory={handleSearchByCategory}
+                searchProducts={handleSearch}
               />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
-          </Stack>
-        </Container>
-        <Footer />
-      </BrowserRouter>
-    </StyledApp>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <Home data={productsData} error={error} loading={loading} />
+                  }
+                />
+                <Route path="/cart" element={<Cart />} />
+              </Routes>
+            </Stack>
+          </Container>
+          <Footer />
+        </BrowserRouter>
+      </StyledApp>
+    </CartContextProvider>
   );
 }
 
