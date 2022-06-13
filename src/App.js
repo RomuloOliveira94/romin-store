@@ -11,6 +11,7 @@ import { Box, Container, CssBaseline, Stack, styled } from "@mui/material";
 
 const StyledApp = styled(Box)({
   backgroundColor: "#D3D3D3",
+  minHeight: "80vh",
 });
 
 function App() {

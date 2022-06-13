@@ -7,8 +7,19 @@ export function CartContextProvider({ children }) {
   const handleAddToCart = (product) => {
     setCart([...cart, product]);
   };
+  const total = cart.reduce((acc, value) => {
+    acc += value.price;
+    return acc;
+  }, 0);
+  const removeFromCart = (id) => {
+    const remainItens = cart.filter((item) => item.id !== id);
+    setCart(remainItens);
+  };
+
   return (
-    <CartContext.Provider value={{ cart, setCart, handleAddToCart }}>
+    <CartContext.Provider
+      value={{ cart, setCart, total, handleAddToCart, removeFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -1,12 +1,13 @@
 import { AppBar, Box, styled, Typography, Link } from "@mui/material";
 import React from "react";
 
+const StyledFooter = styled(Box)({
+  height: "10vh",
+  textAlign: "center",
+  color: "white",
+});
+
 const Footer = () => {
-  const StyledFooter = styled(Box)({
-    height: "10vh",
-    textAlign: "center",
-    color: "white",
-  });
   return (
     <AppBar color={"secondary"} position="static">
       <StyledFooter>
