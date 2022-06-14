@@ -12,8 +12,11 @@ const Footer = () => {
     <AppBar color={"secondary"} position="static">
       <StyledFooter>
         <Typography variant="h4">Romin's Store</Typography>
-        <Typography variant="h5">
-          Developed by <Link href="#">Rômulo Oliveira</Link>
+        <Typography variant="h6">
+          Developed by{" "}
+          <Link href="https://github.com/RomuloOliveira94">
+            Rômulo Oliveira
+          </Link>
         </Typography>
       </StyledFooter>
     </AppBar>

@@ -9,7 +9,6 @@ const StyledToolbar = styled(Toolbar)({
   justifyContent: "space-between",
   alignItems: "center",
   textAlign: "center",
-  height: "10vh",
 });
 
 const StyledLink = styled(Link)({
