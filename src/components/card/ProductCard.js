@@ -17,7 +17,8 @@ export default function ImgMediaCard({ data }) {
         <Typography gutterBottom variant="h4">
           {data.name}
         </Typography>
-        <Typography variant="body1">{data.description}</Typography>
+        <Typography variant="subtitle1">{data.description}</Typography>
+        <Typography variant="caption">Stock: {data.quantity}</Typography>
       </CardContent>
       <Box
         sx={{ width: { xs: "90vw", sm: 400 }, height: 400, margin: "0 auto" }}
