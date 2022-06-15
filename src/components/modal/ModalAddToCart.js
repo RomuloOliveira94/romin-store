@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { style } from "./ModalAddToCart.styled";
 
-const ModalAddToCart = ({ title, description, close, cart }) => {
+const ModalAddToCart = () => {
   const { open, handleClose } = useContext(CartContext);
 
   return (
