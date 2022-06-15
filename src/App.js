@@ -13,6 +13,11 @@ const StyledApp = styled(Box)({
   backgroundColor: "#D3D3D3",
 });
 
+const styleContainer = {
+  minHeight: "80vh",
+  backgroundColor: "#fff",
+};
+
 function App() {
   const [loading, data, error] = useFetch(
     "https://romin-store-mock-api.herokuapp.com/products"
@@ -59,7 +64,7 @@ function App() {
             searchProducts={handleSearch}
             searchProductsByCategory={handleSearchByCategory}
           />
-          <Container sx={{ minHeight: "80vh", backgroundColor: "#fff" }}>
+          <Container sx={styleContainer}>
             <Stack direction={"row"} justifyContent="space-between">
               <SideBar
                 searchProductsByCategory={handleSearchByCategory}

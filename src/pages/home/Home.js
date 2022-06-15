@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import ProductCard from "../../components/card/ProductCard";
+import ModalAddToCart from "../../components/modal/ModalAddToCart";
 
 const Home = ({ data, error, loading }) => {
   return (
@@ -20,6 +21,7 @@ const Home = ({ data, error, loading }) => {
           data.map((product) => (
             <ProductCard data={product} key={product.id} />
           ))}
+        <ModalAddToCart />
       </Box>
     </Box>
   );

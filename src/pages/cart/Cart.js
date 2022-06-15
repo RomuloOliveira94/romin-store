@@ -1,6 +1,14 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Box, styled, Typography, Link, Paper, Container } from "@mui/material";
+import {
+  Box,
+  styled,
+  Typography,
+  Link,
+  Paper,
+  Container,
+  Button,
+} from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 
 const Item = styled(Paper)({
@@ -17,11 +25,11 @@ const MiniInfosContainer = styled(Box)({
 });
 
 const Cart = () => {
-  const { cart, total, removeFromCart } = useContext(CartContext);
+  const { cart, total, removeFromCart, createOrder } = useContext(CartContext);
 
   return (
     <Container>
-      <Typography variant="h4" sx={{ textAlign: "center" }}>
+      <Typography variant="h4" sx={{ textAlign: "center", m:2 }}>
         Cart
       </Typography>
       {cart.map((prod) => (
@@ -48,10 +56,21 @@ const Cart = () => {
         </Typography>
       )}
       {total !== 0 && (
-        <Paper sx={{ margin: "15px", padding: "10px" }}>
-          <Typography variant="h5" sx={{ textAlign: "end" }}>
+        <Paper
+          sx={{
+            margin: "15px",
+            padding: "10px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="h5" sx={{ textAlign: "center" }}>
             Total: {total.toFixed(2)}
           </Typography>
+          <Button onClick={createOrder}>
+            <Typography variant="h6">Order</Typography>
+          </Button>
         </Paper>
       )}
     </Container>
