@@ -1,15 +1,11 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import CartItemCard from "../../components/card/CartItemCard";
-import {
-  Typography,
-  Paper,
-  Container,
-  Button,
-} from "@mui/material";
+import { Typography, Paper, Container, Button } from "@mui/material";
 
 const Cart = () => {
-  const { cart, total, removeFromCart, createOrder } = useContext(CartContext);
+  const { cart, total, totalForEachItem, removeFromCart, createOrder } =
+    useContext(CartContext);
 
   return (
     <Container>
@@ -19,6 +15,7 @@ const Cart = () => {
       {cart.map((prod) => (
         <CartItemCard
           prod={prod}
+          totalForEachItem={totalForEachItem}
           key={prod.id}
           removeFromCart={removeFromCart}
         />

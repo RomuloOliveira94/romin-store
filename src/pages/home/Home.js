@@ -3,7 +3,7 @@ import React from "react";
 import ProductCard from "../../components/card/ProductCard";
 import ModalAddToCart from "../../components/modal/ModalAddToCart";
 
-const Home = ({ data, error, loading }) => {
+const Home = ({ data, error, loading, soldOff }) => {
   return (
     <Box color={"white"} flex={4}>
       <Box sx={{ display: "flex", flexWrap: "wrap" }}>
