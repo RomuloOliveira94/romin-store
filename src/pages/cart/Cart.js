@@ -3,9 +3,21 @@ import { CartContext } from "../../context/CartContext";
 import CartItemCard from "../../components/card/CartItemCard";
 import { Typography, Paper, Container, Button } from "@mui/material";
 
+const paperStyles = {
+  margin: "15px",
+  padding: "10px",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+};
+
 const Cart = () => {
-  const { cart, total, totalForEachItem, removeFromCart, createOrder } =
-    useContext(CartContext);
+  const { cart, removeFromCart, createOrder } = useContext(CartContext);
+
+  const total = cart.reduce((acc, value) => {
+    acc += value.values;
+    return acc;
+  }, 0);
 
   return (
     <Container>
@@ -15,7 +27,6 @@ const Cart = () => {
       {cart.map((prod) => (
         <CartItemCard
           prod={prod}
-          totalForEachItem={totalForEachItem}
           key={prod.id}
           removeFromCart={removeFromCart}
         />
@@ -27,17 +38,9 @@ const Cart = () => {
         </Typography>
       )}
       {total !== 0 && (
-        <Paper
-          sx={{
-            margin: "15px",
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
+        <Paper sx={paperStyles}>
           <Typography variant="h5" sx={{ textAlign: "center" }}>
-            Total: {total.toFixed(2)}
+            Total: ${total.toFixed(2)}
           </Typography>
           <Button onClick={createOrder}>
             <Typography variant="h6">Order</Typography>

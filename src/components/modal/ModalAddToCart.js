@@ -1,12 +1,10 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
 import { Box, Modal, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import { style } from "./ModalAddToCart.styled";
 
-const ModalAddToCart = () => {
-  const { open, handleClose } = useContext(CartContext);
+const ModalAddToCart = ({ open, handleClose }) => {
+  console.log("renderizei modal");
 
   return (
     <div>

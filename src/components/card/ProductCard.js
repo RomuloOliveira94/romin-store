@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -6,10 +6,9 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import { CartContext } from "../../context/CartContext";
 
-export default function ImgMediaCard({ data }) {
-  const { handleAddToCart } = useContext(CartContext);
+export default function ImgMediaCard({ data, addToCart }) {
+  console.log("renderizei card product");
 
   return (
     <Card sx={{ margin: "30px auto" }}>
@@ -46,7 +45,7 @@ export default function ImgMediaCard({ data }) {
         <Button
           variant="contained"
           size="small"
-          onClick={() => handleAddToCart(data)}
+          onClick={() => addToCart(data)}
         >
           Add to bag
         </Button>

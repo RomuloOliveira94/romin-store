@@ -15,7 +15,8 @@ const MiniInfosContainer = styled(Box)({
   flexDirection: "column",
 });
 
-const CartItemCard = ({ prod, removeFromCart, totalForEachItem }) => {
+const CartItemCard = ({ prod, removeFromCart }) => {
+
   return (
     <Item>
       <MiniInfosContainer>
@@ -28,7 +29,7 @@ const CartItemCard = ({ prod, removeFromCart, totalForEachItem }) => {
         />
       </MiniInfosContainer>
       <MiniInfosContainer>
-        <Typography variant="h5">${prod.price}</Typography>
+        <Typography variant="h5">${prod.values.toFixed(2)}</Typography>
         {prod.quantity > 1 && (
           <Typography variant="caption">Quantity: {prod.quantity}</Typography>
         )}
