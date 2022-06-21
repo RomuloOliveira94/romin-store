@@ -14,9 +14,11 @@ export function CartContextProvider({ children }) {
 
     if (existingProduct) quantityControl(existingProduct);
     else {
-      quantityControl(product);
+      product.quantity = 1;
+      //quantityControl(product);
       product.values = product.price;
-      setCart([...cart, product]);
+      setCart((prev) => [...prev, product]);
+      console.log(product.quantity);
     }
 
     return;
@@ -32,9 +34,19 @@ export function CartContextProvider({ children }) {
 
   const quantityControl = (product) => {
     if (product.stock === product.quantity) return stockControl(true);
-    product.quantity += 1;
-    product.values = totalForEachItem(product);
-    return stockControl(false);
+    setCart((prev) =>
+      prev.map((prod) => {
+        if (prod.id === product.id)
+          return {
+            ...prod,
+            quantity: (product.quantity += 1),
+            values: totalForEachItem(product),
+          };
+        return prod;
+      })
+    );
+    console.log(product.quantity);
+    stockControl(false);
   };
 
   const incrementItem = (product) => {

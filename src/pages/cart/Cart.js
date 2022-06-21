@@ -26,6 +26,10 @@ const Cart = () => {
     return acc;
   }, 0);
 
+  const handleIncrementItensFromCart = (product) => {
+    incrementItem(product);
+  };
+
   return (
     <Container>
       <Typography variant="h4" sx={{ textAlign: "center", m: 2 }}>
@@ -36,7 +40,7 @@ const Cart = () => {
           prod={prod}
           key={prod.id}
           removeFromCart={removeFromCart}
-          incrementItem={incrementItem}
+          incrementItem={handleIncrementItensFromCart}
         />
       ))}
       {total === 0 && (
@@ -57,17 +61,15 @@ const Cart = () => {
           </Button>
         </Paper>
       )}
-      {
-        <ModalAddToCart
-          open={open}
-          handleClose={handleClose}
-          title="Thanks for buy!"
-          subTitle="You will receive a email with your order."
-          buttonLeft="Close"
-          buttonRight="Home"
-          to="/"
-        />
-      }
+      <ModalAddToCart
+        open={open}
+        handleClose={handleClose}
+        title="Thanks for buy!"
+        subTitle="You will receive a email with your order."
+        buttonLeft="Close"
+        buttonRight="Home"
+        to="/"
+      />
     </Container>
   );
 };
