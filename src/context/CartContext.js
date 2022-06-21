@@ -22,15 +22,23 @@ export function CartContextProvider({ children }) {
     return;
   };
 
-  const quantityControl = (product) => {
-    if (product.stock === product.quantity) return stockControl(true);
-    product.quantity += 1;
-    const totalForEachItem = cart
+  const totalForEachItem = (product) => {
+    const total = cart
       .filter((prod) => prod.id === product.id)
       .map((prod) => prod.price * prod.quantity)
       .reduce((acc, value) => acc + value, 0);
-    product.values = totalForEachItem;
+    return total;
+  };
+
+  const quantityControl = (product) => {
+    if (product.stock === product.quantity) return stockControl(true);
+    product.quantity += 1;
+    product.values = totalForEachItem(product);
     return stockControl(false);
+  };
+
+  const incrementItem = (product) => {
+    quantityControl(product);
   };
 
   const removeFromCart = (product) => {
@@ -53,6 +61,7 @@ export function CartContextProvider({ children }) {
         handleAddToCart,
         removeFromCart,
         createOrder,
+        incrementItem,
       }}
     >
       {children}

@@ -4,8 +4,8 @@ import ProductCard from "../../components/card/ProductCard";
 import ModalAddToCart from "../../components/modal/ModalAddToCart";
 import { CartContext } from "../../context/CartContext";
 
-const Home = ({ data, error, loading, soldOff }) => {
-  const { handleAddToCart } = useContext(CartContext);
+const Home = ({ data, error, loading }) => {
+  const { handleAddToCart, soldOff } = useContext(CartContext);
 
   //modal
   const [open, setOpen] = useState(false);
@@ -38,15 +38,28 @@ const Home = ({ data, error, loading, soldOff }) => {
               addToCart={addToCart}
             />
           ))}
-        <ModalAddToCart
-          open={open}
-          handleClose={handleClose}
-          title="Product added to the cart!"
-          subTitle="What do you want to do now?"
-          buttonLeft="Keep Buying"
-          buttonRight="Cart"
-          to="/cart"
-        />
+        {!soldOff && (
+          <ModalAddToCart
+            open={open}
+            handleClose={handleClose}
+            title="Product added to the cart!"
+            subTitle="What do you want to do now?"
+            buttonLeft="Keep Buying"
+            buttonRight="Cart"
+            to="/cart"
+          />
+        )}
+        {soldOff && (
+          <ModalAddToCart
+            open={open}
+            handleClose={handleClose}
+            title="Out of Stock"
+            subTitle="Take a look in another options!"
+            buttonLeft="Keep Buying"
+            buttonRight="Cart"
+            to="/cart"
+          />
+        )}
       </Box>
     </Box>
   );

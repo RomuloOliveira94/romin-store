@@ -18,7 +18,8 @@ const Cart = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { cart, removeFromCart, createOrder } = useContext(CartContext);
+  const { cart, removeFromCart, createOrder, incrementItem } =
+    useContext(CartContext);
 
   const total = cart.reduce((acc, value) => {
     acc += value.values;
@@ -35,6 +36,7 @@ const Cart = () => {
           prod={prod}
           key={prod.id}
           removeFromCart={removeFromCart}
+          incrementItem={incrementItem}
         />
       ))}
       {total === 0 && (
@@ -55,15 +57,17 @@ const Cart = () => {
           </Button>
         </Paper>
       )}
-      <ModalAddToCart
-        open={open}
-        handleClose={handleClose}
-        title="Thanks for buy!"
-        subTitle="You will receive a email with your order."
-        buttonLeft="Close"
-        buttonRight="Home"
-        to="/"
-      />
+      {
+        <ModalAddToCart
+          open={open}
+          handleClose={handleClose}
+          title="Thanks for buy!"
+          subTitle="You will receive a email with your order."
+          buttonLeft="Close"
+          buttonRight="Home"
+          to="/"
+        />
+      }
     </Container>
   );
 };
