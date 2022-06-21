@@ -38,7 +38,15 @@ const Home = ({ data, error, loading, soldOff }) => {
               addToCart={addToCart}
             />
           ))}
-        <ModalAddToCart open={open} handleClose={handleClose} />
+        <ModalAddToCart
+          open={open}
+          handleClose={handleClose}
+          title="Product added to the cart!"
+          subTitle="What do you want to do now?"
+          buttonLeft="Keep Buying"
+          buttonRight="Cart"
+          to="/cart"
+        />
       </Box>
     </Box>
   );

@@ -3,7 +3,15 @@ import { Link } from "react-router-dom";
 
 import { style } from "./ModalAddToCart.styled";
 
-const ModalAddToCart = ({ open, handleClose }) => {
+const ModalAddToCart = ({
+  open,
+  handleClose,
+  title,
+  subTitle,
+  buttonLeft,
+  buttonRight,
+  to,
+}) => {
   console.log("renderizei modal");
 
   return (
@@ -16,18 +24,24 @@ const ModalAddToCart = ({ open, handleClose }) => {
       >
         <Box sx={style}>
           <Box sx={{ textAlign: "center" }}>
-            <Typography id="modal-modal-title" variant="h5" component="h2">
-              Product added to the cart!
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 1, mb: 1 }}>
-              What do you want to do now?
-            </Typography>
+            {title && (
+              <Typography id="modal-modal-title" variant="h5" component="h2">
+                {title}
+              </Typography>
+            )}
+            {subTitle && (
+              <Typography id="modal-modal-description" sx={{ mt: 1, mb: 1 }}>
+                {subTitle}
+              </Typography>
+            )}
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Link to="/cart">
-              <Button onClick={handleClose}>Cart</Button>
-            </Link>
-            <Button onClick={handleClose}>Keep Buying</Button>
+            {buttonLeft && <Button onClick={handleClose}>{buttonLeft}</Button>}
+            {buttonRight && (
+              <Link to={to}>
+                <Button onClick={handleClose}>{buttonRight}</Button>
+              </Link>
+            )}
           </Box>
         </Box>
       </Modal>

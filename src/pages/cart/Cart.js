@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import CartItemCard from "../../components/card/CartItemCard";
 import { Typography, Paper, Container, Button } from "@mui/material";
+import ModalAddToCart from "../../components/modal/ModalAddToCart";
 
 const paperStyles = {
   margin: "15px",
@@ -12,6 +13,11 @@ const paperStyles = {
 };
 
 const Cart = () => {
+  //modal
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const { cart, removeFromCart, createOrder } = useContext(CartContext);
 
   const total = cart.reduce((acc, value) => {
@@ -43,10 +49,21 @@ const Cart = () => {
             Total: ${total.toFixed(2)}
           </Typography>
           <Button onClick={createOrder}>
-            <Typography variant="h6">Order</Typography>
+            <Typography variant="h6" onClick={handleOpen}>
+              Order
+            </Typography>
           </Button>
         </Paper>
       )}
+      <ModalAddToCart
+        open={open}
+        handleClose={handleClose}
+        title="Thanks for buy!"
+        subTitle="You will receive a email with your order."
+        buttonLeft="Close"
+        buttonRight="Home"
+        to="/"
+      />
     </Container>
   );
 };
