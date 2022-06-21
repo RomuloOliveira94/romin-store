@@ -14,7 +14,7 @@ const StyledApp = styled(Box)({
 });
 
 const styleContainer = {
-  minHeight: "80vh",
+  minHeight: "84vh",
   backgroundColor: "#fff",
 };
 

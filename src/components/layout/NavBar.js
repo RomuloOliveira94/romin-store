@@ -4,11 +4,18 @@ import { ShoppingBag } from "@mui/icons-material";
 import FooterNavBar from "./FooterNavBar";
 import { Link } from "react-router-dom";
 
+const containerNavBar = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "100vw",
+};
+
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  textAlign: "center",
+  minWidth: "80%",
 });
 
 const StyledLink = styled(Link)({
@@ -35,7 +42,7 @@ const NavBar = ({ searchProducts, searchProductsByCategory }) => {
   };
 
   return (
-    <AppBar color={"secondary"} position="sticky" sx={{ textAlign: "center" }}>
+    <AppBar color={"secondary"} position="sticky" sx={containerNavBar}>
       <StyledToolbar>
         <Typography
           variant="h6"
