@@ -19,7 +19,6 @@ export function CartContextProvider({ children }) {
       setCart([...cart, product]);
     }
 
-    console.log(existingProduct);
     return;
   };
 
@@ -42,6 +41,7 @@ export function CartContextProvider({ children }) {
   };
 
   const createOrder = () => {
+    cart.map((itens) => (itens.quantity = 0));
     setCart([]);
   };
 
