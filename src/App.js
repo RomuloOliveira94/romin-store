@@ -20,7 +20,7 @@ const styleContainer = {
 
 function App() {
   const [loading, data, error] = useFetch(
-    "https://romin-store-mock-api.herokuapp.com/products"
+    "https://https://api-romin-store.onrender.com/products"
   );
 
   const [productsData, setProductsData] = useState(null);
